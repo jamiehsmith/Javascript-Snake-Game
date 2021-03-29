@@ -1,10 +1,26 @@
 function Snake() {
+    // Current location
     this.x = 0;
     this.y = 0;
+    // Speed
     this.xspeed = 1;
     this.yspeed = 0;
+    // Total blocks
+    this.total = 0;
+    this.tail = [];
 
     this.update = function() {
+        // No food eaten
+        if (this.total === this.tail.length) {
+            // Shift tail squares over by 1
+            // So the food when eaten can be added to the front
+            for (let i = 0; i < this.tail.length-1; i++) {
+                this.tail[i] = this.tail[i+1];
+            }
+        }
+        // Front square
+        this.tail[this.total-1] = createVector(this.x, this.y);
+
         // Increase speed
         this.x += this.xspeed * scale;
         this.y += this.yspeed * scale;
@@ -16,8 +32,14 @@ function Snake() {
     }
 
     this.show = function() {
+        // Draw the snake
         // Make a white rectangle
         fill(255);
+        // Shift tail squares over by 1
+        for (let i = 0; i < this.tail.length;i++) {
+            rect(this.tail[i].x, this.tail[i].y, scale, scale);
+        }
+
         rect(this.x, this.y, scale, scale);
     }
 
@@ -31,6 +53,11 @@ function Snake() {
         const d = dist(this.x, this.y, pos.x, pos.y);
 
         // Snake ate food if distance is less than 1 pixel
-        return d < 1;
+        if (d < 1) {
+            this.total++;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
