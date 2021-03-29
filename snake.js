@@ -25,4 +25,12 @@ function Snake() {
         this.xspeed = x;
         this.yspeed = y;
     }
+
+    this.eat = function(pos) {
+        // Distance between snake and food
+        const d = dist(this.x, this.y, pos.x, pos.y);
+
+        // Snake ate food if distance is less than 1 pixel
+        return d < 1;
+    }
 }

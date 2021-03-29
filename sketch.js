@@ -22,6 +22,12 @@ function draw() {
     // Draw food
     fill(255, 0, 100);
     rect(food.x, food.y, scale, scale);
+
+    // Check if snake ate food
+    if (snake.eat(food)) {
+        // Pick a new location for food
+        pickLocation();
+    }
 }
 
 function pickLocation() {
