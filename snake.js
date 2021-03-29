@@ -10,7 +10,7 @@ function Snake() {
         this.y += this.yspeed * scale;
 
         // Constrain values
-        // Between 0 and width / height - scale so snake doesn't go off screen
+        // Between 0 and width || height - scale so snake doesn't go off screen
         this.x = constrain(this.x, 0, width - scale);
         this.y = constrain(this.y, 0, height - scale);
     }
