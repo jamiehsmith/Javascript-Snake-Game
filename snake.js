@@ -60,4 +60,22 @@ function Snake() {
             return false;
         }
     }
+
+    this.death = function() {
+        // Check if snake has intersected with tail
+        // Loop through every spot in the tail
+        for (let i = 0; i < this.tail.length; i++) {
+            // Tail position
+            const pos = this.tail[i];
+            // Distance
+            const d = dist(this.x, this.y, pos.x, pos.y);
+
+            if (d < 1) {
+                // If tail is connected
+                // Reset total and tail
+                this.total = 0;
+                this.tail = [];
+            }
+        }
+    }
 }

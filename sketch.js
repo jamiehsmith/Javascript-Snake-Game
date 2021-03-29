@@ -18,6 +18,7 @@ function draw() {
     background(51);
     snake.update();
     snake.show();
+    snake.death();
 
     // Draw food
     fill(255, 0, 100);
