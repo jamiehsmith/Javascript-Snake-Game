@@ -6,14 +6,19 @@ function Snake() {
 
     this.update = function() {
         // Increase speed
-        this.x += this.xspeed;
-        this.y += this.yspeed;
+        this.x += this.xspeed * scale;
+        this.y += this.yspeed * scale;
+
+        // Constrain values
+        // Between 0 and width / height - scale so snake doesn't go off screen
+        this.x = constrain(this.x, 0, width - scale);
+        this.y = constrain(this.y, 0, height - scale);
     }
 
     this.show = function() {
         // Make a white rectangle
         fill(255);
-        rect(this.x, this.y, 10, 10);
+        rect(this.x, this.y, scale, scale);
     }
 
     this.dir = function(x, y) {

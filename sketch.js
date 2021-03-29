@@ -1,4 +1,6 @@
 let snake;
+// Scale of the grid
+let scale = 20;
 
 function setup() {
     createCanvas(500, 500);
