@@ -5,6 +5,8 @@ let scale = 20;
 function setup() {
     createCanvas(500, 500);
     snake = new Snake();
+    // Reduce frame rate for nostalgic feel
+    frameRate(10);
 }
 
 function draw() {
